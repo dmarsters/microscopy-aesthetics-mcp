@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+recursive-include src/microscopy_aesthetics/ologs *.yaml
+recursive-include docs *.md

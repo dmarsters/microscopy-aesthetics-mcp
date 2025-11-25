@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microscopy-aesthetics-mcp"
+version = "1.0.0"
+description = "MCP server for enhancing image prompts with microscopy aesthetic vocabulary"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Microscopy Aesthetics Contributors"}]
+keywords = ["mcp", "aesthetics", "microscopy", "image-generation", "prompt-enhancement"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "fastmcp>=0.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+microscopy-server = "microscopy_aesthetics.server:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/microscopy-aesthetics-mcp"
+Documentation = "https://github.com/yourusername/microscopy-aesthetics-mcp#readme"
+Repository = "https://github.com/yourusername/microscopy-aesthetics-mcp.git"
+Issues = "https://github.com/yourusername/microscopy-aesthetics-mcp/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+microscopy_aesthetics = ["ologs/*.yaml"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select = ["E", "F", "W", "I", "N", "UP", "ARG"]
+ignore = ["E501"]  # Black handles line length
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v --strict-markers"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+]
