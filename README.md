@@ -13,8 +13,15 @@ pip install -e ".[dev]"
 
 - See `docs/` for full documentation
 - See `src/microscopy_aesthetics/` for source code
+- Part of the Lushy.app Visual Vocabulary ecosystem
 
 ## Deployment
 
 - Claude Desktop: See `docs/QUICK_START.md`
 - FastMCP Cloud: See `docs/DEPLOYMENT_CHECKLIST.md`
+
+## License
+MIT
+
+## Author
+Dal Marsters
